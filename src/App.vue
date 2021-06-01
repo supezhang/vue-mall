@@ -16,7 +16,4 @@
 </script>
 <style lang="scss">
   @import './assets/css/base.css';
-  #app{
-    width:420px;margin:auto;
-  }
 </style>
