@@ -2,7 +2,7 @@
   <div class="home"> 
     <!-- top-nav -->
     <top-nav><span slot="center">首页</span></top-nav>    
-    <b-scroll class="scroll-box">
+    <b-scroll class="scroll-box" @pullingUp="loadeMore" ref="aaa">
       <!-- banner -->
       <banner-cpt :bannerData="bannerData"></banner-cpt>
       <!-- recommend -->
@@ -95,7 +95,12 @@
           this.goods[type].page+=1
         })
       },
-      
+      loadeMore(){
+        this.homeGoods(this.goodsType)
+        this.$refs.aaa.scroll.finishPullUp();
+        this.$refs.aaa.scroll.refresh();
+        console.log('loadMore');
+      },      
     },
     
   }

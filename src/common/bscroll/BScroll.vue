@@ -25,7 +25,7 @@
       probeType:3
     })
     this.scroll.on('pullingUp',()=>{
-
+      this.$emit("pullingUp")
       this.scroll.finishPullUp();
       this.scroll.refresh()
     })
