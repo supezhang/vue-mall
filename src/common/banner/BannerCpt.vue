@@ -2,7 +2,7 @@
   <div>
     <banner>
       <banner-item v-for="item in bannerData" :key="item.title">
-        <a  slot="item-pic" :href="item.link"><img :src="item.image" alt=""></a>
+        <a slot="item-pic" :href="item.link"><img :src="item.image" alt="" @load="imgLoad"></a>
       </banner-item>
     </banner>
   </div>
@@ -23,11 +23,21 @@
   },
   data () {
    return {
+     isLoad:false
    }
   },
   components: {
     Banner,
-    BannerItem
+    BannerItem,    
+  },
+  methods:{
+    imgLoad(){
+      if(!this.isLoad){
+        // console.log("bar-img is loaded");
+        this.$emit("barImgLoad")
+        this.isLoad = true
+      } 
+    }
   }
  }
 </script>

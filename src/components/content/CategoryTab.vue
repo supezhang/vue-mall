@@ -38,8 +38,9 @@
   .category-tab{
     display:flex;
     align-items: center;
-    position:sticky;
-    top:44px;
+    // position:sticky;
+    // top:44px;
+    position:relative;
     z-index: 9;
     background-color:#fff;
     .item{

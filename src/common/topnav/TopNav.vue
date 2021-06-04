@@ -31,11 +31,11 @@
     display:flex;
     align-items: center;
     height:44px;
-    position:fixed;
-    left:0;
-    right:0;
-    top:0;
-    z-index: 1;
+    // position:fixed;
+    // left:0;
+    // right:0;
+    // top:0;
+    // z-index: 1;
     .left{
       flex:0 0 40px;
       width:40px;

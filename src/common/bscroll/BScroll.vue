@@ -29,6 +29,12 @@
       this.scroll.finishPullUp();
       this.scroll.refresh()
     })
+  },
+  methods:{    
+    refresha(){
+      console.log('refresha');
+      return this.scroll.refresh();      
+    }
   }
  }
 </script>

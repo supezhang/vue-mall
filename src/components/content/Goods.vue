@@ -2,7 +2,7 @@
   <div class="goods-wrapper">
     <div class="item" v-for="item in goods" :key="item.title">
       <a href="">
-        <img :src="item.show.img" alt="">       
+        <img :src="item.show.img" alt="" @load="imageLoad">       
         <div>
           <p class="title">{{item.title}}</p>
           <span class="price">{{item.price}}元</span>
@@ -32,6 +32,12 @@
   components: {
 
   },
+  methods:{
+    imageLoad(){
+      // console.log('img load finished');
+      this.$bus.$emit("goodsImageLoad")
+    }
+  }
   
  }
 </script>
