@@ -1,7 +1,7 @@
 <template>
   <div class="goods-wrapper">
-    <div class="item" v-for="item in goods" :key="item.title">
-      <a href="">
+    <div class="item" v-for="item in goods" @click="detailsPage(item.iid)">
+      <a>
         <img :src="item.show.img" alt="" @load="imageLoad">       
         <div>
           <p class="title">{{item.title}}</p>
@@ -26,7 +26,7 @@
   },
   data () {
    return {
-
+    
    }
   },
   components: {
@@ -36,6 +36,9 @@
     imageLoad(){
       // console.log('img load finished');
       this.$bus.$emit("goodsImageLoad")
+    },
+    detailsPage(iid){
+      this.$router.push("/details/"+iid)
     }
   }
   
@@ -52,7 +55,6 @@
       width:50%;
       padding:5px;
       a{
-        text-decoration: none;
         color:#333;
         display:block;
         text-align: center;

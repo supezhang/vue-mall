@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/home/Home'
-
+const Details = ()=>import("@/views/details/Details")
 Vue.use(VueRouter)
 
 const routes = [
@@ -28,6 +28,11 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: () => import('@/views/profile/Profile')
+  },
+  {
+    path: '/details/:iid',
+    name: 'Details',
+    component: Details
   }
 ]
 

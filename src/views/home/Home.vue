@@ -104,6 +104,8 @@
             this.goodsType='sell'
             break;    
         }
+        this.$refs.categorytab2.currentIndex = index
+        this.$refs.categorytab.currentIndex = index
       },
       backTop(){       
         this.$refs.aaa.scroll.scrollTo(0,0,300)
