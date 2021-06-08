@@ -1,11 +1,11 @@
-import {homemultidata} from './request'
+import {baseRequest} from './request'
 
 export function gethomemultidata(){
-  return homemultidata({url:'/home/multidata'})
+  return baseRequest({url:'/home/multidata'})
 }
 
 export function getGoods(type,page){
-  return homemultidata({
+  return baseRequest({
     url:'/home/data',
     params:{
       type,

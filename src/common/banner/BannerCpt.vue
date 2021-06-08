@@ -15,10 +15,7 @@
   name: 'BannerCpt',
   props:{
     bannerData:{
-      type:Array,
-      default:[
-        {url:'xxx'}
-      ]
+      type:Array      
     }
   },
   data () {
@@ -28,7 +25,7 @@
   },
   components: {
     Banner,
-    BannerItem,    
+    BannerItem,
   },
   methods:{
     imgLoad(){

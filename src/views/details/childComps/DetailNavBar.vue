@@ -1,5 +1,5 @@
 <template>
- <div class="detail-nav-bar-wrapper">
+ <div class="detail-nav-bar-wrapper">   
    <div class="left" slot="left" @click="backClick">
      <span class="back-icon"></span>
    </div>
@@ -26,7 +26,8 @@
   components: {
     TopNav,
   },
-  created(){
+  
+    TopNavcreated(){
     
   },
   methods:{
@@ -42,15 +43,14 @@
 </script>
 
 <style scoped lang="scss">
-  .detail-nav-bar-wrapper{
+  .detail-nav-bar-wrapper{    
+    border-bottom:1px solid #efefef; 
     display:flex;
     align-items: center;
-    border-bottom:1px solid #efefef;
     .left,.right{
-      flex: 0 0 40px;
-      width: 40px;
-      text-align: center;
-    }
+      flex:0 0 44px;width:44px;height:44px;
+      display:flex;align-items: center;justify-content: center;
+    }  
     .back-icon{
       display:inline-block;
       width:12px;height:12px;
@@ -70,7 +70,7 @@
           color:#f00;
         }
       }
-    }
+    }    
   }
   
  

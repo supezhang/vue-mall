@@ -2,7 +2,7 @@
  <div class="banner-wrapper">
    <div class="banner-content">
     <slot></slot>
-   </div>
+   </div>   
  </div>
 </template>
 
@@ -15,7 +15,6 @@
    }
   },
   components: {
-
   }
  }
 </script>
@@ -24,6 +23,7 @@
   .banner-wrapper{
     width:100%;
     overflow: hidden;
+    position:relative;
     .banner-content{
       white-space:nowrap;
       animation:remove 8s infinite;
