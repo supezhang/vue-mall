@@ -32,7 +32,6 @@
   },
   methods:{    
     refresha(){
-      console.log('refresha');
       return this.scroll.refresh();      
     }
   }

@@ -8,6 +8,11 @@ export function detailData(iid){
     }
   })
 }
+export function getRecommend(){
+  return baseRequest({
+    url:'/recommend'
+  })
+}
 
 export class BaseInfo{
   constructor(itemInfo,columns,services){
@@ -31,5 +36,11 @@ export class Shop {
     this.sells = shopInfo.cSells;
     this.score = shopInfo.score;
     this.goodsCount = shopInfo.cGoods;
+  }
+}
+export class itemParams{
+  constructor(info,rule){
+    this.info = info
+    this.rule = rule
   }
 }

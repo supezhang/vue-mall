@@ -1,14 +1,15 @@
 <template>
   <div class="goods-wrapper">
     <div class="item" v-for="item in goods" @click="detailsPage(item.iid)">
-      <a>
-        <img :src="item.show.img" alt="" @load="imageLoad">       
-        <div>
+      <div class="goods-box">
+        <img v-if="item.show" :src="item.show.img" alt="" @load="imageLoad">       
+        <img v-if="item.image" :src="item.image" alt="" @load="imageLoad">       
+        <div class="aaa" style="width:100%;">
           <p class="title">{{item.title}}</p>
           <span class="price">{{item.price}}元</span>
           <span class="cfav"><span class="m-icon icon-star-outline"></span> {{item.cfav}}</span>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </template>
@@ -40,6 +41,11 @@
     detailsPage(iid){
       this.$router.push("/details/"+iid)
     }
+  },
+  computed:{
+    showImg(){
+      // return this.goods.image || this.goods.show.img
+    }
   }
   
  }
@@ -49,26 +55,36 @@
   .goods-wrapper{
     display:flex;
     flex-wrap: wrap;    
+    width:100%;
     .item{
       box-sizing: border-box;
-      flex:1 1 50%;
+      flex:0 0 50%;
       width:50%;
       padding:5px;
-      a{
+      .goods-box{
         color:#333;
         display:block;
+        width:100%;
         text-align: center;
         line-height:1;
         font-size:14px;
       }
       img{
         display:block;
+        margin:auto;
       }
-      .title{
+      .title{        
         margin:5px 0;
-        white-space: nowrap;
-        overflow:hidden;
+        // white-space: nowrap;
+        // overflow:hidden;
+        // text-overflow: ellipsis;
+        text-overflow: -o-ellipsis-lastline;
+        overflow: hidden;
         text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
       }
       .price{
         margin-right:5px;

@@ -26,13 +26,13 @@
   components: {
     TopNav,
   },
-  
-    TopNavcreated(){
+  created(){
     
   },
   methods:{
     itemClick(index){
       this.currentIndex = index
+      this.$emit("titleclick",index)
     },
     backClick(){
       // this.$router.go(-1)
