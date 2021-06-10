@@ -4,7 +4,7 @@ body{
 }
 ul,li{list-style: none;}
 img{max-width:100%;}
-.m-icon{
+.mall-icon{
   display:inline-block;
   width:16px;height:16px;
   background-repeat: no-repeat;

@@ -15,7 +15,7 @@
     position:fixed;
     right:10px;
     bottom:70px;
-    z-index: 8;    
+    z-index: 19;    
     .icon{
       box-shadow: 0 0 8px 8px #ddd;
       display:inline-block;

@@ -8,7 +8,7 @@
         <banner-item v-for="item in bannerData" class="banner-item" :key='item'>
           <img slot="item-pic" :src="item" />
         </banner-item>
-      </banner>
+      </banner>      
       <!-- 基本信息 -->
       <detail-base-info :BaseInfo="BaseInfo"></detail-base-info>
       <!-- 店铺信息 -->
@@ -22,12 +22,16 @@
       <!-- 推荐 -->
       <goods :goods="recommendData" ref="goods"></goods>
     </b-scroll>
+    <!-- 底部导航 -->
+    <detail-bottom-bar @click.native="addCart"></detail-bottom-bar>
+    <back-top v-show="backTopShow" @click.native="backTop"></back-top>
  </div>
 </template>
 
 <script>
  import DetailNavBar from './childComps/DetailNavBar'
  import Banner from '@/common/banner/Banner'
+ import BackTop from '@/common/backtop/BackTop'
  import BannerItem from '@/common/banner/BannerItem'
  import DetailShopInfo from './childComps/DetailShopInfo'
  import DetailBaseInfo from "./childComps/DetailBaseInfo"
@@ -35,6 +39,7 @@
  import DetailGoodInfo from './childComps/DetailGoodInfo'
  import DetailParamsInfo from './childComps/DetailParamsInfo'
  import DetailComment from './childComps/DetailComment'
+ import DetailBottomBar from './childComps/DetailBottomBar'
  import Goods from '@/components/content/Goods'
  import {detailData,Shop,BaseInfo,itemParams,getRecommend} from '@/network/detail'
  export default {
@@ -51,6 +56,7 @@
      recommendData:[],
      scrollDots:[],
      index:0,
+     backTopShow:false
    }
   },
   components: {
@@ -63,7 +69,9 @@
     DetailGoodInfo,
     DetailParamsInfo,
     DetailComment,
-    Goods
+    Goods,
+    DetailBottomBar,
+    BackTop
   },
   created(){
     this.iid = this.$route.params.iid
@@ -122,8 +130,21 @@
             this.$refs.detailnav.currentIndex = this.index
           }
         }
+        this.backTopShow = positionY>1000?true:false
       })
-    }    
+    },
+    backTop(){
+      this.$refs.bscrollbox.scroll.scrollTo(0,0,200)
+    },
+    addCart(){
+      const product = {}
+      product.image = this.bannerData[0]
+      product.title = this.BaseInfo.title
+      product.price = this.BaseInfo.lowNowPrice
+      product.iid = this.iid
+      product.desc = this.BaseInfo.desc
+      this.$store.dispatch("addCart",product)
+    }
   },
   mounted(){
     this.Detailscroll()
@@ -157,7 +178,7 @@
     position:fixed;
     z-index:9;
     top:44px;
-    bottom:0;
+    bottom:58px;
     background:#fff;
     overflow: hidden;
   }
