@@ -24,13 +24,17 @@
     </b-scroll>
     <!-- 底部导航 -->
     <detail-bottom-bar @click.native="addCart"></detail-bottom-bar>
+    <!-- 返回顶部 -->
     <back-top v-show="backTopShow" @click.native="backTop"></back-top>
+    <!-- 加入购物车tips -->
+    <toast v-show="toastTxt" :toastTxt="toastTxt"></toast>
  </div>
 </template>
 
 <script>
  import DetailNavBar from './childComps/DetailNavBar'
  import Banner from '@/common/banner/Banner'
+ import Toast from '@/common/toast/Toast'
  import BackTop from '@/common/backtop/BackTop'
  import BannerItem from '@/common/banner/BannerItem'
  import DetailShopInfo from './childComps/DetailShopInfo'
@@ -56,7 +60,8 @@
      recommendData:[],
      scrollDots:[],
      index:0,
-     backTopShow:false
+     backTopShow:false,
+     toastTxt:'',
    }
   },
   components: {
@@ -71,7 +76,8 @@
     DetailComment,
     Goods,
     DetailBottomBar,
-    BackTop
+    BackTop,
+    Toast,
   },
   created(){
     this.iid = this.$route.params.iid
@@ -143,7 +149,12 @@
       product.price = this.BaseInfo.lowNowPrice
       product.iid = this.iid
       product.desc = this.BaseInfo.desc
-      this.$store.dispatch("addCart",product)
+      this.$store.dispatch("addCart",product).then(res=>{
+        // this.toastTxt = res
+        // setTimeout(()=>{
+        //   this.toastTxt = ""
+        // },1000)
+      })
     }
   },
   mounted(){
