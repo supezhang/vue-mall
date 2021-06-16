@@ -70,8 +70,11 @@
       this.homeGoods("pop");
       this.homeGoods("new");
       this.homeGoods("sell"); 
+     
     },
     mounted(){
+      
+
       this.$refs.aaa.scroll.on("scroll",position=>{ 
         this.isShow = (-position.y>=1000?true:false)
         this.cateTabShow = (-position.y>=this.offsetTopTab?true:false)
@@ -106,6 +109,10 @@
         }
         this.$refs.categorytab2.currentIndex = index
         this.$refs.categorytab.currentIndex = index
+        
+        this.$refs.aaa.scroll.finishPullUp();
+        this.$refs.aaa.refresha;
+
       },
       backTop(){       
         this.$refs.aaa.scroll.scrollTo(0,0,300)
@@ -139,7 +146,12 @@
         this.homeGoods(this.goodsType)
         this.$refs.aaa.scroll.finishPullUp();
         // console.log('loadMore');
-      },      
+      },
+      //更换主题 测试
+      changeColor(){
+        let body = document.body.style;
+        body.setProperty('--mycolor','white')
+      }      
     },
     // 销毁
     destroyed(){
@@ -160,6 +172,19 @@
   }
 </script>
 <style lang="scss" scoped>
+  :root{
+    --mycolor:yellow;
+  }
+  .home{
+    // --mycolor:green;
+  }
+  .scroll-box{
+    --mycolor:red;
+  }
+  .var2,
+  .var{
+    color:var(--mycolor)
+  }
   .scroll-box{
     height:calc(100vh - 108px);
     overflow: hidden;

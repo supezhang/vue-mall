@@ -1,13 +1,13 @@
 <template>
   <div class="goods-wrapper">
-    <div class="item" v-for="item in goods" @click="detailsPage(item.iid)">
+    <div class="item" v-for="item in goods" @click="detailsPage(item.iid)" :key="item">
       <div class="goods-box">
-        <img v-if="item.show" :src="item.show.img" alt="" @load="imageLoad">       
-        <img v-if="item.image" :src="item.image" alt="" @load="imageLoad">       
+        <img v-if="item.show" v-lazy="item.show.img" alt="" @load="imageLoad">       
+        <img v-if="item.image" v-lazy="item.image" alt="" @load="imageLoad">       
         <div class="aaa" style="width:100%;">
           <p class="title">{{item.title}}</p>
           <span class="price">{{item.price}}元</span>
-          <span class="cfav"><span class="m-icon icon-star-outline"></span> {{item.cfav}}</span>
+          <span class="cfav"><span class="mall-icon icon-star-outline"></span> {{item.cfav}}</span>
         </div>
       </div>
     </div>
@@ -43,9 +43,7 @@
     }
   },
   computed:{
-    showImg(){
-      // return this.goods.image || this.goods.show.img
-    }
+ 
   }
   
  }
@@ -92,6 +90,7 @@
       }
       .icon-star-outline{
         vertical-align: top;
+        height:14px;
         height:14px;
       }
     }

@@ -56,6 +56,11 @@
         overflow: hidden;
         img{
           max-width:100%;
+          &[lazy='loading']{
+            display:block;
+            width:150px;height:150px;
+            margin:40px auto;
+          }
         }
       }
       .item-des{
