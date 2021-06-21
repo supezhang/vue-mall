@@ -6,7 +6,9 @@ import actions from './action'
 Vue.use(Vuex)
 
 const state = {
-  cartList:[]
+  cartList:[],
+  userId:0,
+  user:{name:1000,password:123456}
 }
 export default new Vuex.Store({
   // state: {

@@ -36,6 +36,8 @@
     // right:0;
     // top:0;
     // z-index: 1;
+    position:relative;
+    z-index:9;
     .left{
       flex:0 0 40px;
       width:40px;

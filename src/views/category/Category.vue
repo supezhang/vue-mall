@@ -2,12 +2,12 @@
   <div>
     <top-nav ref="topnav"><span slot="center">分类</span></top-nav>  
     <div class="category">
-      <div class="goods-nav">
-        <slide-nav :category="category"></slide-nav>
-      </div>
-      <div class="goods-content">
-        <goods :goods="goods"></goods>
-      </div>
+      <b-scroll class="goods-nav">
+        <slide-nav :category="category" @slideClick="slideClick"></slide-nav>
+      </b-scroll>
+      <b-scroll class="goods-content" ref="rightcontent">
+        <right-content :goodsdata="goods"></right-content>
+      </b-scroll>
     </div>
   </div>
  
@@ -19,7 +19,7 @@
 import BScroll from '@/common/bscroll/BScroll'
 import SlideNav from './childComps/SlideNav'
 import TopNav from '@/common/topnav/TopNav'
-import Goods from '@/components/content/Goods'
+import RightContent from './childComps/RightContent'
 
 import {category,subcategory} from '@/network/category'
 export default {
@@ -27,9 +27,8 @@ export default {
   data(){
     return{
       category:[],
-      subcategory:{},
       goods:[],
-      maitKey:582
+      maitKey:1
     }
   },
   components: {
@@ -37,37 +36,47 @@ export default {
     BScroll,
     SlideNav,
     TopNav,
-    Goods
+    RightContent
   },
   created(){
     this.getCategory();
-    this.getSubCategory(this.maitKey)
+    this.getSubCategory()
   },
   mounted(){
     
   },
+  computed:{
+   getdoods(){
+     this.getSubCategory(this.maitKey)
+   }
+  },
   methods:{
     getCategory(){
       category().then(res=>{
-        console.log(res);
-        this.category = res.data.data.category.list
+        this.category = res.data.data.category.list       
+        this.maitKey = this.category[0].maitKey
       })
     },
-    getSubCategory(maitKey){
+    getSubCategory(maitKey=0){
       subcategory(maitKey).then(res=>{
-        console.log(res);
        this.goods = res.data.data.list
       })
+    },
+    slideClick(key){
+      this.maitKey = key
+      this.$refs.rightcontent.scroll.scrollTo(0,0,0)
     }
   }
 }
 </script>
 <style lang="scss" scope>
-  .box{ 
-    overflow: hidden;
-  }
+  
   .category{
     display:flex;
+    height:calc(100vh - 44px - 54px);
+    overflow: hidden;
+    .goods-nav,
+    .goods-content{height:100%;}
     .goods-nav{
       flex:0 0 120px;
       width:120px;

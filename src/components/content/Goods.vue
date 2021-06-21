@@ -1,6 +1,6 @@
 <template>
   <div class="goods-wrapper">
-    <div class="item" v-for="item in goods" @click="detailsPage(item.iid)" :key="item">
+    <div class="item" v-for="item in goods" @click="detailsPage(item.iid)" :key="item.title">
       <div class="goods-box">
         <img v-if="item.show" v-lazy="item.show.img" alt="" @load="imageLoad">       
         <img v-if="item.image" v-lazy="item.image" alt="" @load="imageLoad">       

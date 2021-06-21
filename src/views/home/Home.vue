@@ -5,6 +5,7 @@
      <!-- 分类 -->
     <category-tab ref="categorytab2" v-show="cateTabShow" :cateTab="['精选','新款','流行']" @tabClick="tabClick"></category-tab>      
     <b-scroll class="scroll-box" @pullingUp="loadeMore" ref="aaa" id="abc">
+      <h2 class="var">以用scss变量</h2>
       <!-- banner -->
       <banner-cpt :bannerData="bannerData" @barImgLoad="barImgLoad"></banner-cpt>
       <!-- recommend -->

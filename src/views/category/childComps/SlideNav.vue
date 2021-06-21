@@ -1,7 +1,9 @@
 <template>
  <div class="slide-nav">
    <ul class="nav-list">
-     <li :class="{active:currentIndex==index}" v-for="(item,index) in category">{{item.title}}</li>
+     <li :class="{active:currentIndex==index}"
+      v-for="(item,index) in category"
+      @click="itemClick(item.maitKey,index)">{{item.title}}</li>
    </ul>
  </div>
 </template>
@@ -19,27 +21,34 @@
   },
   components: {
 
+  },
+  methods:{
+    itemClick(maitKey,index){
+      this.$emit("slideClick",maitKey)
+      this.currentIndex = index
+    }
   }
  }
 </script>
 
 <style scoped lang="scss">
   .slide-nav{
-    border:1px solid #ddd;
     ul{list-style: none;padding:0;margin:0;}
     .nav-list{      
       li{
-        font-size:14px;
+        font-size:16px;
         color:#666;
         line-height:1;
         padding:12px 10px;
         text-align: center;
+        background:#eee;
+        border-left:2px solid transparent;
         &.active{
           color:red;
+          background:#fff;
+          border-left-color:red;
         }
-        + li{
-          border-top:1px solid #ddd;
-        }
+        
       }
     }
   }
