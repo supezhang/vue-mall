@@ -8,7 +8,15 @@ Vue.use(Vuex)
 const state = {
   cartList:[],
   userId:0,
-  user:{name:1000,password:123456}
+  user:{
+    name:"test",
+    password:123456,
+    avatar:'avatar19.svg',
+    phone:'13814785269',
+    money:124.3,
+    discount:3,
+    integral:563
+  }
 }
 export default new Vuex.Store({
   // state: {

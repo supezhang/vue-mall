@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive exclude="Details">
+    <keep-alive exclude="Details,Profile">
       <router-view/>
     </keep-alive>
     <tab-bar-cpt></tab-bar-cpt>

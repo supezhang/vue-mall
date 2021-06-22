@@ -6,7 +6,7 @@
         <slide-nav :category="category" @slideClick="slideClick"></slide-nav>
       </b-scroll>
       <b-scroll class="goods-content" ref="rightcontent">
-        <right-content :goodsdata="goods"></right-content>
+        <!-- <right-content :goodsdata="goods"></right-content> -->
       </b-scroll>
     </div>
   </div>
@@ -40,7 +40,7 @@ export default {
   },
   created(){
     this.getCategory();
-    this.getSubCategory()
+    // this.getSubCategory()
   },
   mounted(){
     

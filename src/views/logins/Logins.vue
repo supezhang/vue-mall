@@ -14,10 +14,9 @@
     <div class="form-foot">
       <div class="btns">
         <input class="primary btn" @click="logins" value="登录" type="button"/>
-        <input class="btn" type="reset" value="取消"/>
+        <input class="btn" type="reset" value="取消" @click="$router.go(-1)"/>
       </div>
-    </div>
-     
+    </div>     
    </form>
  </div>
 </template>
@@ -41,7 +40,7 @@
       if(islogin){
         this.$store.commit('changeuserid',1)
         this.$router.push('/home')
-        sessionStorage.setItem("token","true1")
+        sessionStorage.setItem("token",1)
       }else{
         alert("账号与密码不匹配")
       }      
