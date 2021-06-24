@@ -3,7 +3,7 @@
    <ul class="nav-list">
      <li :class="{active:currentIndex==index}"
       v-for="(item,index) in category"
-      @click="itemClick(item.maitKey,index)">{{item.title}}</li>
+      @click="itemClick(item.maitKey,item.miniWallkey,index)">{{item.title}}</li>
    </ul>
  </div>
 </template>
@@ -23,8 +23,8 @@
 
   },
   methods:{
-    itemClick(maitKey,index){
-      this.$emit("slideClick",maitKey)
+    itemClick(maitKey,miniWallkey,index){
+      this.$emit("slideClick",maitKey,miniWallkey)
       this.currentIndex = index
     }
   }

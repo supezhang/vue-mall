@@ -3,7 +3,7 @@
    <p class="title">{{BaseInfo.title}}</p>
    <div class="price-des">
      <span class="now-pirce">￥{{BaseInfo.lowNowPrice}}</span>
-     <span>{{BaseInfo.oldPrice}}</span>     
+     <s>{{BaseInfo.oldPrice}}</s>     
      <span v-if="BaseInfo.discountDesc" class="tag">{{BaseInfo.discountDesc}}</span>
    </div>
    <div class="columns-des">

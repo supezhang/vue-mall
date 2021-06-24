@@ -1,9 +1,10 @@
 <template>
   <div class="goods-wrapper">
-    <div class="item" v-for="item in goods" @click="detailsPage(item.iid)" :key="item.title">
+    <div class="item" v-for="item in goods" @click="detailsPage(item.iid)" :key="Math.random()+item.title">
       <div class="goods-box">
         <img v-if="item.show" v-lazy="item.show.img" alt="" @load="imageLoad">       
         <img v-if="item.image" v-lazy="item.image" alt="" @load="imageLoad">       
+        <img v-if="item.img" v-lazy="item.img" alt="" @load="imageLoad">       
         <div class="aaa" style="width:100%;">
           <p class="title">{{item.title}}</p>
           <span class="price">{{item.price}}元</span>
@@ -27,7 +28,7 @@
   },
   data () {
    return {
-    
+     random:''
    }
   },
   components: {
@@ -43,7 +44,9 @@
     }
   },
   computed:{
- 
+    mathRandom(){
+
+    }
   }
   
  }

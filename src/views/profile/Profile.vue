@@ -4,7 +4,8 @@
     
     <div class="profile-avatar">      
       <div class="avatar">
-        <img v-if="user.name" src="../../assets/img/profile/avatar19.svg" alt="1">
+        <img v-if="user.name" :src="require(`../../assets/img/profile/${user.avatar}`)" alt="1">
+        <!-- <img v-if="user.name" src="../../assets/img/profile/avatar19.svg" alt="1"> -->
         <img v-else src="../../assets/img/profile/avatar.svg" alt="2">
       </div>
       <div class="info" @click="loginClick">
@@ -29,6 +30,10 @@
       </div>
     </div>
     <msg @click.native="signout"></msg>    
+    <p>{{num2}}</p>
+    <p>{{num3}}</p>
+    <p>{{aPlus}}</p>
+    <input type="text" v-model="cityName">
   </div>
 </template>
 
@@ -42,6 +47,8 @@ export default {
   data(){
     return {
       user:{},
+      num:2,
+      cityName:"上海"
     }
   },
   components: {
@@ -54,6 +61,27 @@ export default {
   computed:{
     logined(){
       return sessionStorage.getItem('token')==1
+    },
+    num2(){
+      console.log(this.num);
+      return this.num+3
+    },   
+    num3(){
+      console.log(this.num);
+      return this.num2+2
+    },
+    aPlus:{
+      get:function(){
+        return this.num+8
+      },
+      set:function(v){
+        this.num = v - 30
+      }
+    }
+  },
+  watch:{
+    cityName(news,olds){   
+      console.log('cityName变化了',news,olds)           
     }
   },
   methods:{
